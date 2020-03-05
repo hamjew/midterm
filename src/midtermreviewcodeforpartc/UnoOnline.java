@@ -68,6 +68,21 @@ public class UnoOnline
         }//loop only ends when password is valid so now we create the User
         
         User newUser = new User(userName, password);
+        
+        UserNameValidator validator = new UserNameValidator();
+        
+        if(!validator.userNameChecking(newUser)){
+            boolean check = true;
+            while(check){
+                System.out.println("Enter the UserName you want");
+                userName = scan.next();
+                if(userName.length()>=1){
+                    newUser.setName(userName);
+                    check = false;
+                }
+            }
+        }
+        
         users[userCount] = newUser;//add the new user to the user list
         userCount++;
         System.out.println("New User Added");
